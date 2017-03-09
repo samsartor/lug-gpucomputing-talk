@@ -1,0 +1,8 @@
+Title:  GPU Computing
+Description: >
+    Doing math in bulk!
+Date: 2017-03-09
+Thumbnail: graphics/tesla.png
+Files:
+    SlidesPDF: gpu_computing.pdf
+    LaTeX: gpu_computing.tex
