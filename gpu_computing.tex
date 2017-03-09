@@ -98,9 +98,30 @@
     }
 \end{frame}
 
-\section{GPU Operation}
+\section{How do GPUs Work?}
 
-\section{Machine Learning}
+\begin{frame}{Architecture}
+    \includegraphics[width=\textwidth]{graphics/gpuarch}
+
+    GPUs excel at repetition. Instead of performing the same calculation many
+    times in sequence, they step though sequences of instructions all at once
+    using several cores. Each core does the same operation at the same time,
+    but with different inputs.
+
+\end{frame}
+
+\begin{frame}{Branching}
+    \splitslide{0.65}{.7em}{
+
+        Unlike CPUs, which jump back and forth through a program as conditions
+        are met, a GPU will run every possible instruction in sequence,
+        turning different cores on and off as branching occurs. In effect,
+        GPUs are useful for parallel computations but not for multitasking.
+
+    }{
+        \pmidg{\includegraphics[width=\textwidth]{graphics/branching}}
+    }
+\end{frame}
 
 \section{Computing At Home}
 
@@ -110,6 +131,10 @@
         Although shaders are used for pixel stuff, they are still
         fundamentally general purpose. Use vertex attributes, uniforms, and
         textures as input. Use the framebuffer for output.
+
+        \vspace{2ex}
+
+        OpenGL bindings exist for every language under the sun.
 
     }{
         \pmidg{\includegraphics[width=\textwidth]{graphics/shaderfluid}}
@@ -166,7 +191,7 @@
 
     \begin{itemize}
         \item Only available on high-end Nvidia cards
-        \item Very low level
+        \item Low level
         \item Annoying to setup
     \end{itemize}
 \end{frame}
@@ -176,7 +201,11 @@
 
         OpenCL is a cross platform alternative to CUDA. It is similar in
         structure to OpenGL, but intended for general-purpose computation (not
-        just 3D graphics). Bindings exist for all common languages.
+        just 3D graphics). 
+
+        \vspace{2ex}
+
+        Bindings exist for all languages. I even found a Brainfuck API.
 
     }{
         \pmidg{\includegraphics[width=\textwidth]{graphics/opencl-logo}}
@@ -201,10 +230,102 @@
     \end{itemize}
 \end{frame}
 
-\section{ArrayFire}
+\begin{frame}{ArrayFire}
+    \splitslide{0.75}{.7em}{
 
-\section{Torch}
+        ArrayFire is an easy-to-use library of high-level functions with
+        built-in implementations for CUDA, OpenCL, and the CPU. It is useful
+        for linear algebra, statistics, trigonometry, signal processing, image
+        processing, and more.
 
-\section{TensorFlow}
+        \vspace{2ex}
+
+        ArrayFire has first-party support for C++, Python, Go, Rust, Ruby,
+        Lisp, Java, Fortran, D, R, C\#, JavaScript, and Lua.
+
+    }{
+        \pmidg{\includegraphics[width=\textwidth]{graphics/arrayfire-logo}}
+    }
+\end{frame}
+
+\begin{frame}{ArrayFire - Pros \& Cons}
+    \textbf{Pros}
+
+    \begin{itemize}
+        \item Trivial to use
+        \item Cross platform
+        \item Just pass arrays to functions
+    \end{itemize}
+
+    \textbf{Cons}
+
+    \begin{itemize}
+        \item Limited library of functions
+        \item No way of defining your own
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Torch}
+    \splitslide{0.75}{.7em}{
+
+        Torch is a popular Lua library for machine learning that seems to be
+        used a lot. It has CPU, CUDA, and OpenCL backends available.
+
+    }{
+        \pmidg{\includegraphics[width=\textwidth]{graphics/torch-logo}}
+    }
+\end{frame}
+
+\begin{frame}{Torch - Pros \& Cons}
+    \textbf{Pros}
+
+    \begin{itemize}
+        \item Large community
+        \item High level API
+        \item Fast
+    \end{itemize}
+
+    \textbf{Cons}
+
+    \begin{itemize}
+        \item Lua
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{TensorFlow}
+    \splitslide{0.75}{.7em}{
+
+        TensorFlow is Google's library for moving big lists of numbers around,
+        generally with machine learning in mind. As a result, Torch and
+        Tensorflow are currently at war. It has a CPU implementation and a
+        CUDA-based GPU implementation.
+
+        \vspace{2ex}
+
+        TensorFlow is primarily for Python, with C++ behind the scenes.
+
+    }{
+        \pmidg{\includegraphics[width=\textwidth]{graphics/tensorflow-logo}}
+    }
+\end{frame}
+
+\begin{frame}{TensorFlow - Pros \& Cons}
+    \textbf{Pros}
+
+    \begin{itemize}
+        \item Python
+        \item Good visualization tools
+        \item Cool abstraction
+        \item Best library for Recurrent Neural Networks
+    \end{itemize}
+
+    \textbf{Cons}
+
+    \begin{itemize}
+        \item Slightly slower than Torch (for now)
+        \item Tricky to set up (CUDA)
+        \item Needs a high-end Nvidia card to use the GPU
+    \end{itemize}
+\end{frame}
 
 \end{document}
